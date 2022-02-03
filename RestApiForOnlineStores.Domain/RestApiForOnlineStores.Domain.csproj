@@ -6,7 +6,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Postamates\Types" />
+      <Folder Include="Orders\Converters" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Result" Version="1.1.1" />
     </ItemGroup>
 
 </Project>

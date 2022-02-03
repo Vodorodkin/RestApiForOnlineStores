@@ -1,14 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using RestApiForOnlineStores.Domain.Orders.Types;
+﻿using System.Collections.Generic;
 
 namespace RestApiForOnlineStores.Domain.Orders.Models
 {
-    public class Order
+    public class OrderBlank
     {
-        //can use guid type for Id
         public int Id { get; set; }
-        public OrderState State { get; set; }
+        public int State { get; set; }
         public IEnumerable<string> Products { get; set; }
         public decimal Cost { get; set; }
         public string PostamatId { get; set; }

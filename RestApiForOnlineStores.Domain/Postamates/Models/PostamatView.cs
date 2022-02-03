@@ -1,10 +1,10 @@
 ﻿namespace RestApiForOnlineStores.Domain.Postamates.Models
 {
-    public class Postamat
+    public class PostamatView
     {
         public string Id { get; set; }
         public string Address { get; set; }
-        //true - working, false - closed
         public bool State { get; set; }
+        public string StateName { get; set; }
     }
 }
