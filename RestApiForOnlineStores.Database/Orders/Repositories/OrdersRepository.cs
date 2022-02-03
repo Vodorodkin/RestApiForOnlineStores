@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using RestApiForOnlineStores.Database.Contexts;
 using RestApiForOnlineStores.Database.Orders.Models;
 using RestApiForOnlineStores.Database.Orders.Repositories.Interfaces;
 
@@ -6,24 +9,31 @@ namespace RestApiForOnlineStores.Database.Orders.Repositories
 {
     public class OrdersRepository : IOrdersRepository
     {
-        public Task CreateOrder(OrderDb orderDb)
+        private readonly SqlDbContext _context;
+        
+        public OrdersRepository(SqlDbContext context)
         {
-            throw new System.NotImplementedException();
+            _context = context;
+        }
+        
+        public async Task CreateOrderAsync(OrderDb orderDb)
+        {
+            await _context.OrderDbs.AddAsync(orderDb);
+            await _context.SaveChangesAsync();
         }
 
-        public Task EditOrder(OrderDb orderDb)
+        public async Task EditOrderAsync(OrderDb orderDb)
         {
-            throw new System.NotImplementedException();
+            _context.OrderDbs.Update(orderDb);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<OrderDb> GetOrderById(int orderId)
+        public async Task<OrderDb> GetOrderByIdAsync(int orderId)
         {
-            throw new System.NotImplementedException();
-        }
+            OrderDb orderDb = await _context.OrderDbs
+                .FirstOrDefaultAsync(o => o.Id == orderId);
 
-        public Task CancelOrder(int orderId)
-        {
-            throw new System.NotImplementedException();
+            return orderDb;
         }
     }
 }
