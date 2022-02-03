@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using RestApiForOnlineStores.Database.Contexts;
 using RestApiForOnlineStores.Database.Postamates.Models;
 using RestApiForOnlineStores.Database.Postamates.Repositories.Interfaces;
 
@@ -7,14 +10,29 @@ namespace RestApiForOnlineStores.Database.Postamates.Repositories
 {
     public class PostamatesRepository : IPostamatesRepository
     {
-        public Task<IEnumerable<PostamatDb>> GetActivePostamates()
+        private readonly SqlDbContext _context;
+
+        public PostamatesRepository(SqlDbContext context)
         {
-            throw new System.NotImplementedException();
+            _context = context;
         }
 
-        public Task<PostamatDb> GetPostamatById(string postamatId)
+        public async Task<IEnumerable<PostamatDb>> GetActivePostamatesAsync()
         {
-            throw new System.NotImplementedException();
+            IEnumerable<PostamatDb> postamatDbs = await _context.PostamatDbs
+                .Where(p => p.State)
+                .ToListAsync();
+
+            return postamatDbs;
+        }
+
+        public async Task<PostamatDb> GetPostamatByIdAsync(string postamatId)
+        {
+            PostamatDb postamatDb = await _context
+                .PostamatDbs
+                .FirstOrDefaultAsync();
+
+            return postamatDb;
         }
     }
 }

@@ -6,7 +6,7 @@ namespace RestApiForOnlineStores.Database.Postamates.Repositories.Interfaces
 {
     public interface IPostamatesRepository
     {
-        Task<IEnumerable<PostamatDb>> GetActivePostamates();
-        Task<PostamatDb> GetPostamatById(string postamatId);
+        Task<IEnumerable<PostamatDb>> GetActivePostamatesAsync();
+        Task<PostamatDb> GetPostamatByIdAsync(string postamatId);
     }
 }
