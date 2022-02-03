@@ -1,7 +1,6 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace RestApiForOnlineStores.Domain.Orders.Types
+namespace RestApiForOnlineStores.Domain.Orders.Enums
 {
     public enum OrderState
     {

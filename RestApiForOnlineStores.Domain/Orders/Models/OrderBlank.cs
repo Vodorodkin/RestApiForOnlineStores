@@ -4,7 +4,7 @@ namespace RestApiForOnlineStores.Domain.Orders.Models
 {
     public class OrderBlank
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public int State { get; set; }
         public IEnumerable<string> Products { get; set; }
         public decimal Cost { get; set; }

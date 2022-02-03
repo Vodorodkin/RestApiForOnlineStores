@@ -8,7 +8,7 @@ namespace RestApiForOnlineStores.Domain.Orders.Services.Interfaces
     {
         Task<IResult> CreateOrder(OrderBlank orderBlank);
         Task<IResult> EditOrder(OrderBlank orderBlank);
-        Task<IResult<Order>> GetOrderById(int orderId);
-        Task<IResult> CancelOrder(int orderId);
+        Task<IResult<Order>> GetOrderById(int? orderId);
+        Task<IResult> CancelOrder(int? orderId);
     }
 }

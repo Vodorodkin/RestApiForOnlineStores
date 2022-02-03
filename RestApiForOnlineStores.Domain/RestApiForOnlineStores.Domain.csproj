@@ -6,11 +6,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Orders\Converters" />
+      <PackageReference Include="Result" Version="1.1.1" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Result" Version="1.1.1" />
+      <ProjectReference Include="..\RestApiForOnlineStores.Database\RestApiForOnlineStores.Database.csproj" />
+      <ProjectReference Include="..\RestApiForOnlineStores.Tools\RestApiForOnlineStores.Tools.csproj" />
     </ItemGroup>
 
 </Project>
