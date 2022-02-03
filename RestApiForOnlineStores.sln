@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestApiForOnlineStores.Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestApiForOnlineStores.Domain", "RestApiForOnlineStores.Domain\RestApiForOnlineStores.Domain.csproj", "{F2FB00BA-AA56-4DC6-AD0D-B6CC5795B6B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestApiForOnlineStores.Tools", "RestApiForOnlineStores.Tools\RestApiForOnlineStores.Tools.csproj", "{8C9A2C57-C78E-4659-BA14-EF9E16C3B56E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{F2FB00BA-AA56-4DC6-AD0D-B6CC5795B6B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2FB00BA-AA56-4DC6-AD0D-B6CC5795B6B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2FB00BA-AA56-4DC6-AD0D-B6CC5795B6B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C9A2C57-C78E-4659-BA14-EF9E16C3B56E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C9A2C57-C78E-4659-BA14-EF9E16C3B56E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C9A2C57-C78E-4659-BA14-EF9E16C3B56E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C9A2C57-C78E-4659-BA14-EF9E16C3B56E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
