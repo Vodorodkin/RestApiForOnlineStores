@@ -2,9 +2,16 @@
 {
     public class Postamat
     {
-        public string Id { get; set; }
-        public string Address { get; set; }
+        public string Id { get; }
+        public string Address { get; }
         //true - working, false - closed
-        public bool State { get; set; }
+        public bool State { get; }
+
+        public Postamat(string id, string address, bool state)
+        {
+            Id = id;
+            Address = address;
+            State = state;
+        }
     }
 }
