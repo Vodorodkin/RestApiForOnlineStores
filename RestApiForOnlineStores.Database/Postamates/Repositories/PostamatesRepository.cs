@@ -21,6 +21,7 @@ namespace RestApiForOnlineStores.Database.Postamates.Repositories
         {
             IEnumerable<PostamatDb> postamatDbs = await _context.PostamatDbs
                 .Where(p => p.State)
+                .OrderBy(p => p.Id)
                 .ToListAsync();
 
             return postamatDbs;
@@ -30,7 +31,7 @@ namespace RestApiForOnlineStores.Database.Postamates.Repositories
         {
             PostamatDb postamatDb = await _context
                 .PostamatDbs
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(p => p.Id == postamatId);
 
             return postamatDb;
         }
