@@ -40,7 +40,7 @@ namespace RestApiForOnlineStores.Domain.Postamates.Services
             PostamatDb postamatDb = await _postamatesRepository.GetPostamatByIdAsync(postamatId);
 
             if (postamatDb == null)
-                return Result.Failure<Postamat>("Не найден постамат");
+                return Result.Failure<Postamat>("Не найден");
             
             return Result.Success(postamatDb.ToPostamat());
         }
