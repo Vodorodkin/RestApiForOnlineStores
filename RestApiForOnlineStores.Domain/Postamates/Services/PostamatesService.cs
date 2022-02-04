@@ -35,7 +35,7 @@ namespace RestApiForOnlineStores.Domain.Postamates.Services
             IResult validatePostamatResult = FormatValidator.IsCorrectPostamatId(postamatId);
             
             if (validatePostamatResult.Ok == false)
-                return (IResult<Postamat>)validatePostamatResult;
+                return Result.Failure<Postamat>(validatePostamatResult.Reason);
             
             PostamatDb postamatDb = await _postamatesRepository.GetPostamatByIdAsync(postamatId);
 
