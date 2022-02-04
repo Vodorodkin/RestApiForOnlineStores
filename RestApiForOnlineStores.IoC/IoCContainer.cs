@@ -22,8 +22,7 @@ namespace RestApiForOnlineStores.IoC
 
         public static void InitContainer(ContainerBuilder container)
         {
-            PostgreSqlContext postgreSqlContext = new PostgreSqlContext(RestApiForOnlineStoresConnectionString);
-            container.RegisterInstance(postgreSqlContext).As<SqlDbContext>().SingleInstance();
+            container.RegisterType<PostgreSqlContext>().As<SqlDbContext>().WithParameter("connectionString", RestApiForOnlineStoresConnectionString).InstancePerLifetimeScope();
             container.RegisterType<OrdersRepository>().As<IOrdersRepository>().SingleInstance();
             container.RegisterType<PostamatesRepository>().As<IPostamatesRepository>().SingleInstance();
             container.RegisterType<PostamatesService>().As<IPostamatesService>().SingleInstance();
