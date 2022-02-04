@@ -4,6 +4,7 @@ using Jane;
 using RestApiForOnlineStores.Domain.Orders.Models;
 using RestApiForOnlineStores.Domain.Postamates.Models;
 using RestApiForOnlineStores.Domain.Postamates.Services.Interfaces;
+using RestApiForOnlineStores.Tools.FormatValidators;
 
 namespace RestApiForOnlineStores.Domain.Orders.Services
 {
@@ -34,6 +35,14 @@ namespace RestApiForOnlineStores.Domain.Orders.Services
             if (postamat.State == false)
                 return Result.Failure($"запрещено");
 
+            IResult isCorrectPhoneNumber = FormatValidator.IsCorrectPhoneNumber(orderBlank.PhoneNumber);
+            if (isCorrectPhoneNumber.Ok == false)
+                return isCorrectPhoneNumber;
+
+            IResult isCorrectPostamatId = FormatValidator.IsCorrectPostamatId(orderBlank.PostamatId);
+            if (isCorrectPostamatId.Ok == false)
+                return isCorrectPostamatId;
+            
             if (existingOrder != null)
             {
                 if (orderBlank.State != (int) existingOrder.State)
