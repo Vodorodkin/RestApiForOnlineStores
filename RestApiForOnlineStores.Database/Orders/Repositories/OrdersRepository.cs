@@ -24,7 +24,8 @@ namespace RestApiForOnlineStores.Database.Orders.Repositories
 
         public async Task EditOrderAsync(OrderDb orderDb)
         {
-            _context.OrderDbs.Update(orderDb);
+            _context.Entry(await _context.OrderDbs.FirstOrDefaultAsync(o => o.Id == orderDb.Id))
+                .CurrentValues.SetValues(orderDb);
             await _context.SaveChangesAsync();
         }
 
