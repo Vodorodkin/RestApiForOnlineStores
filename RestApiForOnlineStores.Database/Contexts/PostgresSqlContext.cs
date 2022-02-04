@@ -19,6 +19,10 @@ namespace RestApiForOnlineStores.Database.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<OrderDb>()
+                .Property(o => o.Id)
+                .ValueGeneratedOnAdd();
+            
             modelBuilder.Entity<OrderDb>().HasData(
                 new OrderDb
                 {
