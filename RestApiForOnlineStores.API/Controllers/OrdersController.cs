@@ -35,7 +35,7 @@ namespace RestApiForOnlineStores.API.Controllers
         }
         
         [HttpPost("Edit")]
-        public async Task<ActionResult> EditOrderAsync(OrderBlank orderBlank)
+        public async Task<ActionResult> EditOrderAsync([FromBody]OrderBlank orderBlank)
         {
             try
             {
@@ -51,13 +51,23 @@ namespace RestApiForOnlineStores.API.Controllers
         }
 
         [HttpGet("GetById")]
-        public async Task<ActionResult> GetOrderByIdAsync(int? orderId)
+        public async Task<ActionResult> GetOrderByIdAsync([FromQuery]int? orderId)
         {
             try
             {
                 IResult<Order> getOrderByIdResult = await _ordersService.GetOrderByIdAsync(orderId);
-                getOrderByIdResult.Value?.ToOrderView();
-                return new JsonResult(getOrderByIdResult);
+                JsonResult jsonResult;
+                
+                if (getOrderByIdResult.Ok)
+                {
+                    jsonResult = new JsonResult(Result.Success(getOrderByIdResult.Value.ToOrderView()));
+                }
+                else
+                {
+                    jsonResult = new JsonResult(Result.Failure(getOrderByIdResult.Reason));
+                }
+                
+                return jsonResult;
             }
             catch (Exception e)
             {
@@ -67,11 +77,11 @@ namespace RestApiForOnlineStores.API.Controllers
         }
 
         [HttpPost("Cancel")]
-        public async Task<ActionResult> CancelOrderAsync(int? orderId)
+        public async Task<ActionResult> CancelOrderAsync([FromBody]OrderBlank orderBlank)
         {
             try
             {
-                IResult cancelOrderResult = await _ordersService.CancelOrderAsync(orderId);
+                IResult cancelOrderResult = await _ordersService.CancelOrderAsync(orderBlank.Id);
 
                 return new JsonResult(cancelOrderResult);
             }
