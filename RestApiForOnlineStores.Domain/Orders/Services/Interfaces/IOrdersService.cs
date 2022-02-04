@@ -4,7 +4,7 @@ using RestApiForOnlineStores.Domain.Orders.Models;
 
 namespace RestApiForOnlineStores.Domain.Orders.Services.Interfaces
 {
-    public interface IOrderServices
+    public interface IOrdersService
     {
         Task<IResult> CreateOrder(OrderBlank orderBlank);
         Task<IResult> EditOrder(OrderBlank orderBlank);

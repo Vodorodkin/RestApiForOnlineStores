@@ -8,12 +8,12 @@ using RestApiForOnlineStores.Domain.Orders.Services.Interfaces;
 
 namespace RestApiForOnlineStores.Domain.Orders.Services
 {
-    public class OrderService : IOrderServices
+    public class OrdersService : IOrdersService
     {
         private readonly IOrdersRepository _ordersRepository;
         private readonly ValidationOrderService _validationOrderService;
 
-        public OrderService(IOrdersRepository ordersRepository, ValidationOrderService validationOrderService)
+        public OrdersService(IOrdersRepository ordersRepository, ValidationOrderService validationOrderService)
         {
             _ordersRepository = ordersRepository;
             _validationOrderService = validationOrderService;
