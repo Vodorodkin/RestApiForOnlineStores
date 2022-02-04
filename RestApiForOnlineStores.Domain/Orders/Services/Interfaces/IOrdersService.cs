@@ -6,9 +6,9 @@ namespace RestApiForOnlineStores.Domain.Orders.Services.Interfaces
 {
     public interface IOrdersService
     {
-        Task<IResult> CreateOrder(OrderBlank orderBlank);
-        Task<IResult> EditOrder(OrderBlank orderBlank);
-        Task<IResult<Order>> GetOrderById(int? orderId);
-        Task<IResult> CancelOrder(int? orderId);
+        Task<IResult> CreateOrderAsync(OrderBlank orderBlank);
+        Task<IResult> EditOrderAsync(OrderBlank orderBlank);
+        Task<IResult<Order>> GetOrderByIdAsync(int? orderId);
+        Task<IResult> CancelOrderAsync(int? orderId);
     }
 }

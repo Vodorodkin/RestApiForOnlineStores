@@ -19,7 +19,7 @@ namespace RestApiForOnlineStores.Domain.Orders.Services
             _validationOrderService = validationOrderService;
         }
 
-        public async Task<IResult> CreateOrder(OrderBlank orderBlank)
+        public async Task<IResult> CreateOrderAsync(OrderBlank orderBlank)
         {
             if (orderBlank == null)
                 return Result.Failure($"{nameof(orderBlank)} is null");
@@ -34,7 +34,7 @@ namespace RestApiForOnlineStores.Domain.Orders.Services
             return Result.Success();
         }
 
-        public async Task<IResult> EditOrder(OrderBlank orderBlank)
+        public async Task<IResult> EditOrderAsync(OrderBlank orderBlank)
         {
             if (orderBlank == null)
                 return Result.Failure($"{nameof(orderBlank)} is null");
@@ -47,7 +47,7 @@ namespace RestApiForOnlineStores.Domain.Orders.Services
             if (!validationResult.Ok)
                 return validationResult;
 
-            IResult<Order> exitingOrderResult = await GetOrderById(orderBlank.Id);
+            IResult<Order> exitingOrderResult = await GetOrderByIdAsync(orderBlank.Id);
             
             if (!exitingOrderResult.Ok)
                 return exitingOrderResult;
@@ -57,7 +57,7 @@ namespace RestApiForOnlineStores.Domain.Orders.Services
             return Result.Success();
         }
 
-        public async Task<IResult<Order>> GetOrderById(int? orderId)
+        public async Task<IResult<Order>> GetOrderByIdAsync(int? orderId)
         {
             if (orderId == null)
                 return Result.Failure<Order>($"{nameof(orderId)} is null");
@@ -70,9 +70,9 @@ namespace RestApiForOnlineStores.Domain.Orders.Services
             return Result.Success(orderDb.ToOrder());
         }
 
-        public async Task<IResult> CancelOrder(int? orderId)
+        public async Task<IResult> CancelOrderAsync(int? orderId)
         {
-            IResult<Order> exitingOrderResult = await GetOrderById(orderId);
+            IResult<Order> exitingOrderResult = await GetOrderByIdAsync(orderId);
             
             if (!exitingOrderResult.Ok)
                 return exitingOrderResult;
