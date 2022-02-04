@@ -1,13 +1,10 @@
-using System;
 using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Protocols;
 using RestApiForOnlineStores.IoC;
 
 namespace RestApiForOnlineStores.API
@@ -16,7 +13,11 @@ namespace RestApiForOnlineStores.API
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers(ConfigureMvcOptions);
+            services.AddControllers(ConfigureMvcOptions)
+                .AddNewtonsoftJson(options =>
+                {
+                    options.UseCamelCasing(true);
+                });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

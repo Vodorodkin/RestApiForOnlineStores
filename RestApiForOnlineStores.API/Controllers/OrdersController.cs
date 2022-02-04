@@ -2,12 +2,13 @@
 using System.Threading.Tasks;
 using Jane;
 using Microsoft.AspNetCore.Mvc;
+using RestApiForOnlineStores.Domain.Orders.Converters;
 using RestApiForOnlineStores.Domain.Orders.Models;
 using RestApiForOnlineStores.Domain.Orders.Services.Interfaces;
 
 namespace RestApiForOnlineStores.API.Controllers
 {
-    [Route("/Orders")]
+    [Route("Orders")]
     public class OrdersController : Controller
     {
         private readonly IOrdersService _ordersService;
@@ -18,7 +19,7 @@ namespace RestApiForOnlineStores.API.Controllers
         }
 
         [HttpPost("Create")]
-        public async Task<ActionResult> CreateOrderAsync(OrderBlank orderBlank)
+        public async Task<ActionResult> CreateOrderAsync([FromBody]OrderBlank orderBlank)
         {
             try
             {
@@ -54,8 +55,8 @@ namespace RestApiForOnlineStores.API.Controllers
         {
             try
             {
-                IResult getOrderByIdResult = await _ordersService.GetOrderByIdAsync(orderId);
-
+                IResult<Order> getOrderByIdResult = await _ordersService.GetOrderByIdAsync(orderId);
+                getOrderByIdResult.Value?.ToOrderView();
                 return new JsonResult(getOrderByIdResult);
             }
             catch (Exception e)
@@ -66,7 +67,7 @@ namespace RestApiForOnlineStores.API.Controllers
         }
 
         [HttpPost("Cancel")]
-        public async Task<ActionResult> CancelOrderAsync([FromBody]int? orderId)
+        public async Task<ActionResult> CancelOrderAsync(int? orderId)
         {
             try
             {
