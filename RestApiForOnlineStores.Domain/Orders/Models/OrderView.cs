@@ -4,7 +4,7 @@ namespace RestApiForOnlineStores.Domain.Orders.Models
 {
     public class OrderView
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public int State { get; set; }
         public string StateName { get; set; }
         public IEnumerable<string> Products { get; set; }
@@ -13,7 +13,7 @@ namespace RestApiForOnlineStores.Domain.Orders.Models
         public string PhoneNumber { get; set; }
         public string RecipientFullName { get; set; }
 
-        public OrderView(int id, int state, string stateName, IEnumerable<string> products, decimal cost, string postamatId, string phoneNumber, string recipientFullName)
+        public OrderView(int? id, int state, string stateName, IEnumerable<string> products, decimal cost, string postamatId, string phoneNumber, string recipientFullName)
         {
             Id = id;
             State = state;

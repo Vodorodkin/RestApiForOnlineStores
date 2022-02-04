@@ -7,7 +7,7 @@ namespace RestApiForOnlineStores.Domain.Orders.Models
     public class Order
     {
         //can use guid type for Id
-        public int Id { get; }
+        public int? Id { get; }
         public OrderState State { get; private set; }
         public IEnumerable<string> Products { get; }
         public decimal Cost { get; }
@@ -15,7 +15,7 @@ namespace RestApiForOnlineStores.Domain.Orders.Models
         public string PhoneNumber { get; }
         public string RecipientFullName { get; }
 
-        public Order(int id, OrderState state, IEnumerable<string> products, decimal cost, string postamatId, string phoneNumber, string recipientFullName)
+        public Order(int? id, OrderState state, IEnumerable<string> products, decimal cost, string postamatId, string phoneNumber, string recipientFullName)
         {
             Id = id;
             State = state;

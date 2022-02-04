@@ -10,7 +10,7 @@ namespace RestApiForOnlineStores.Domain.Orders.Converters
         public static OrderDb ToOrderDb(this OrderBlank orderBlank)
         {
             OrderDb orderDb = new OrderDb(
-                (int)orderBlank.Id,
+                orderBlank.Id,
                 orderBlank.State,
                 orderBlank.Products,
                 orderBlank.Cost,

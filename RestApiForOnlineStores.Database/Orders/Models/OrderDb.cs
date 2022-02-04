@@ -9,7 +9,7 @@ namespace RestApiForOnlineStores.Database.Orders.Models
     public class OrderDb
     {
         [Key]
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public int State { get; set; }
         public List<string> Products { get; set; }
         public decimal Cost { get; set; }
@@ -17,7 +17,7 @@ namespace RestApiForOnlineStores.Database.Orders.Models
         public string PhoneNumber { get; set; }
         public string RecipientFullName { get; set; }
 
-        public OrderDb(int id, int state, IEnumerable<string> products, decimal cost, string postamatId, string phoneNumber, string recipientFullName)
+        public OrderDb(int? id, int state, IEnumerable<string> products, decimal cost, string postamatId, string phoneNumber, string recipientFullName)
         {
             Id = id;
             State = state;

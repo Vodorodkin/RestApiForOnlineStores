@@ -11,5 +11,10 @@ namespace RestApiForOnlineStores.Domain.Orders.Models
         public string PostamatId { get; set; }
         public string PhoneNumber { get; set; }
         public string RecipientFullName { get; set; }
+
+        public OrderBlank()
+        {
+            
+        }
     }
 }
